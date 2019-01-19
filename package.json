@@ -1,0 +1,38 @@
+{
+  "name": "ts-http-endpoints",
+  "version": "1.0.3",
+  "author": "Binau",
+  "license": "SEE LICENSE IN CC-BY-4.0",
+  "repository": {
+    "url": "https://gitlab.binau.org/binau/http-services.binau.org"
+  },
+  "bugs": {
+    "url": "https://gitlab.binau.org/binau/http-services.binau.org/issues"
+  },
+  "dependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/koa-bodyparser": "^4.2.1",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compose": "^4.1.0",
+    "koa-path-match": "^2.0.0",
+    "koa-send": "^5.0.0",
+    "ts-all-utils": "^1.0.8",
+    "ws": "^6.1.2"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.18",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "build-js": "tsc -d -p tsconfig-js.json",
+    "publish-patch": "npm run build-js && npm version patch && npm publish",
+    "test": "mocha --timeout 5000 --require ts-node/register ./test/*.ts"
+  }
+}
