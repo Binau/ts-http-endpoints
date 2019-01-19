@@ -18,7 +18,7 @@ import {HttpServer} from '../src/server/http.server';
 
 # Installation avec npm
 ```
-npm install --save http-typescript
+npm install --save ts-http-endpoints
 ```
 
 # Documentation

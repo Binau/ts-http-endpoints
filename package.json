@@ -4,10 +4,11 @@
   "author": "Binau",
   "license": "SEE LICENSE IN CC-BY-4.0",
   "repository": {
-    "url": "https://gitlab.binau.org/binau/http-services.binau.org"
+    "type": "git",
+    "url": "https://github.com/Binau/ts-http-endpoints.git"
   },
   "bugs": {
-    "url": "https://gitlab.binau.org/binau/http-services.binau.org/issues"
+    "url": "https://github.com/Binau/ts-http-endpoints/issues"
   },
   "dependencies": {
     "@types/koa": "^2.0.48",
