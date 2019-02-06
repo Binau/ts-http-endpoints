@@ -1,9 +1,7 @@
 import {assert} from 'chai';
 import {HttpServer} from '../src/server/http.server';
-import {HttpClient} from '../src/client/http.client';
-import {ClientWebWs} from '../src/client/client.web.ws';
 import {ClientNodeWs} from '../src/client/client.node.ws';
-import {WsServer} from '../src/server/ws.server';
+import {WsServerInterface} from '../src';
 
 describe('Ws', function () {
 
@@ -44,7 +42,7 @@ describe('Ws', function () {
 
             // Creation server
             const server: HttpServer = new HttpServer();
-            let serverWs: WsServer;
+            let serverWs: WsServerInterface;
             await server
                 .ws({
                     onConnect: (ws) => {
