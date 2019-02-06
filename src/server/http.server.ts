@@ -72,7 +72,6 @@ export class HttpServer {
         this.log(`Load [WS] ${wsParam.path}`);
 
         let route = this.koaPathMath(wsParam.path, (ctx) => {
-
             try {
                 let server = new WsServer(ctx, wsParam);
                 server.connected();

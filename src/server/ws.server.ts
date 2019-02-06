@@ -1,12 +1,14 @@
 import {WsServerParam} from './ws.server.param';
+import {ParameterizedContext} from 'koa';
+import {WsServerInterface} from './ws.server.interface';
 
-export class WsServer{
+export class WsServer implements WsServerInterface{
 
     public debug: boolean = true;
     public ws: any;
 
     public constructor(
-        public koaContext: any,
+        public koaContext: ParameterizedContext,
         public wsServerParam: WsServerParam) {
         this.ws = this.koaContext.websocket;
 
@@ -18,7 +20,7 @@ export class WsServer{
     /**
      * Indique une connection
      */
-    public connected(){
+    public connected() {
         this.logDebug(`onConnect`);
         this.wsServerParam.onConnect(this);
     }
