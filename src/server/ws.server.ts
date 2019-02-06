@@ -57,9 +57,9 @@ export class WsServer implements WsServerInterface{
      * Action a la fermeture de la connection
      * @private
      */
-    protected _onError(/*evt*/) {
+    protected _onError(evt) {
         this.logDebug(`onError`);
-        this.wsServerParam.onError();
+        this.wsServerParam.onError(evt);
     }
 
     /**

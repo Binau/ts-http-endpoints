@@ -13,7 +13,7 @@ export class WsServerParam {
     onClose?() {
     };
 
-    onError?() {
+    onError?(evt: any) {
     };
 }
 
