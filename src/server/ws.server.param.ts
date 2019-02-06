@@ -4,16 +4,16 @@ export class WsServerParam {
     debug?: boolean = false;
     path?: string = '/';
 
-    onConnect?(wsServer: WsServerInterface) {
+    onConnect(wsServer: WsServerInterface) {
     };
 
-    onMessage?(data: any) {
+    onMessage(data: any) {
     };
 
-    onClose?() {
+    onClose() {
     };
 
-    onError?(evt: any) {
+    onError(evt: any) {
     };
 }
 

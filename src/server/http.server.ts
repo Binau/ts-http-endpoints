@@ -53,20 +53,11 @@ export class HttpServer {
      * @param path
      * @param ctorArgs
      */
-    public ws(wsParam: WsServerParam): this {
+    public ws(wsParam?: WsServerParam): this {
 
         // Init des valeurs par defaut
-        wsParam = wsParam || {};
-        wsParam.debug = true;
+        wsParam = wsParam || new WsServerParam();
         wsParam.path = wsParam.path || '/';
-        wsParam.onConnect = wsParam.onConnect || (() => {
-        });
-        wsParam.onMessage = wsParam.onMessage || (() => {
-        });
-        wsParam.onClose = wsParam.onClose || (() => {
-        });
-        wsParam.onError = wsParam.onError || (() => {
-        });
 
         //
         this.log(`Load [WS] ${wsParam.path}`);

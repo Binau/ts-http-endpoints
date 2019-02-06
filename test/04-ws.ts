@@ -12,7 +12,7 @@ describe('Ws', function () {
             // Creation server
             const server: HttpServer = new HttpServer();
             await server
-                .ws({})
+                .ws()
                 .listen(7845);
 
             // On attend la fin de l'appel
@@ -61,6 +61,8 @@ describe('Ws', function () {
 
                         // Fermeture du serveur
                         server.close();
+                    },
+                    onError(evt: any) {
                     }
                 })
                 .listen(7845);
@@ -91,6 +93,7 @@ describe('Ws', function () {
             clientWs.send('Ping');
 
         });
+
 
     });
 
