@@ -12,7 +12,7 @@ describe('Get', function () {
 
             // Creation server
             const server: HttpServer = new HttpServer();
-            server.displayLog = false;
+            server.debug = false;
             server.get(() => testOk = true).listen(7845);
 
             // On attend la fin de l'appel
@@ -30,7 +30,7 @@ describe('Get', function () {
 
             // Creation server
             const server: HttpServer = new HttpServer();
-            server.displayLog = false;
+            server.debug = false;
             server.get(() => testOk = true, '/chemin').listen(7845);
 
             // On attend la fin de l'appel
@@ -48,7 +48,7 @@ describe('Get', function () {
 
             // Creation server
             const server: HttpServer = new HttpServer();
-            server.displayLog = false;
+            server.debug = false;
             server.get(p => testOk = p.params.id === '8', '/chemin:id').listen(7845);
 
             // On attend la fin de l'appel
@@ -66,7 +66,7 @@ describe('Get', function () {
 
             // Creation server
             const server: HttpServer = new HttpServer();
-            server.displayLog = false;
+            server.debug = false;
             server.get(p => testOk = p.query.val === '8', '/chemin').listen(7845);
 
             // On attend la fin de l'appel

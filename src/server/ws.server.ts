@@ -2,14 +2,16 @@ import {WsServerParam} from './ws.server.param';
 import {ParameterizedContext} from 'koa';
 import {WsServerInterface} from './ws.server.interface';
 
-export class WsServer implements WsServerInterface{
+export class WsServer implements WsServerInterface {
 
-    public debug: boolean = true;
     public ws: any;
 
     public constructor(
         public koaContext: ParameterizedContext,
-        public wsServerParam: WsServerParam) {
+        public wsServerParam: WsServerParam,
+        private path: string,
+        private debug = false
+    ) {
         this.ws = this.koaContext.websocket;
 
         this.ws.on('message', this._onMessage.bind(this));
@@ -83,7 +85,7 @@ export class WsServer implements WsServerInterface{
             message = JSON.stringify(data);
         }
 
-        this.logDebug(`(WS) ${this.wsServerParam.path} => ${message}`);
+        this.logDebug(`(WS) ${this.path} => ${message}`);
         this.ws.send(message);
     }
 
@@ -99,7 +101,7 @@ export class WsServer implements WsServerInterface{
      * @param message
      */
     private logDebug(message: string) {
-        this.debug && console.log(`(WS SERVER) ${this.wsServerParam.path} ${message}`);
+        this.debug && console.log(`(WS SERVER) ${this.path} ${message}`);
     }
 
     /**
@@ -107,7 +109,7 @@ export class WsServer implements WsServerInterface{
      * @param message
      */
     private logError(message: string) {
-        console.error(`(WS SERVER) ${this.wsServerParam.path} ${message}`);
+        console.error(`(WS SERVER) ${this.path} ${message}`);
     }
 
 }

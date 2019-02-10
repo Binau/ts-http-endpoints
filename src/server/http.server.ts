@@ -33,7 +33,7 @@ export class HttpServer {
      *
      */
     constructor(
-        public displayLog = false
+        public debug = false
     ) {
         // Chargement des serveur
         // koa + koa bordy parser
@@ -53,18 +53,17 @@ export class HttpServer {
      * @param path
      * @param ctorArgs
      */
-    public ws(wsParam?: WsServerParam): this {
+    public ws(wsParam?: WsServerParam, path: string = '/'): this {
 
         // Init des valeurs par defaut
         wsParam = wsParam || new WsServerParam();
-        wsParam.path = wsParam.path || '/';
 
         //
-        this.log(`Load [WS] ${wsParam.path}`);
+        this.log(`Load [WS] ${path}`);
 
-        let route = this.koaPathMath(wsParam.path, (ctx) => {
+        let route = this.koaPathMath(path, (ctx) => {
             try {
-                let server = new WsServer(ctx, wsParam);
+                let server = new WsServer(ctx, wsParam, path, this.debug);
                 server.connected();
             } catch (e) {
                 this.log(`[WS] ERROR : `, e);
@@ -227,7 +226,7 @@ export class HttpServer {
      */
     private log(log: string, e?: any): void {
 
-        if (!this.displayLog) return;
+        if (!this.debug) return;
 
         let params: any[] = [`(SERVER) ${log}`];
         if (e) params.push(e);
